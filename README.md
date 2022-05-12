@@ -1,2 +1,1 @@
-# react-todo-list
-Basic MERN stack todo list app
+# Basic MERN stack todo list app
