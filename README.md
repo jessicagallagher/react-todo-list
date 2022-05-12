@@ -1,1 +1,1 @@
-# Basic MERN stack todo list app
+# Basic MERN Stack Todo List App
