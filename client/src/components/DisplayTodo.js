@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import UpdateTodo from '../UpdateTodo';
-import TodoLists from '../TodoLists';
+import UpdateTodo from './UpdateTodo'
+import TodoLists from './TodoLists';
 
 export default function DisplayTodo() {
   const [infoTodo, setInfoTodo] = useState([]);
