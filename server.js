@@ -1,8 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const configDatabase = require('./configurations/database.js');
-// const todo = require('./routes/todo.routes.js');
-const path = require('path');
+const todo = require('./routes/todo.routes.js');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -18,13 +17,12 @@ app.use(cors({ origin: true, credentials: true }));
 
 // middleware
 app.use(express.json({ extended: false }));
-app.use(express.static(path.join(__dirname, './client', 'build')));
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, './client', 'build', 'index.html'));
-});
+app.get('/', (req, res) =>
+  res.send('HELLO WORLD! THE SERVER IS UP AND RUNNING!')
+);
 
 // routes
-app.use('/api/todoapp', require(path.join(__dirname, './routes/todo.routes.js')));
+app.use('/api/todoapp', todo);
 
 // listener
 app.listen(PORT, () =>

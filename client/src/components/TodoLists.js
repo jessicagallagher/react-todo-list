@@ -4,10 +4,11 @@ export default function TodoLists({ todoInfos, editHandler, deleteHandler }) {
   return (
     // iterate over todoData and pass content to this component--diplay contents of each todo doc in db
     <li key={_id}>
-      <div className='title-description'>
-        <h2>{title}</h2>
+      <div className='pin'>📌</div>
+      <div>
+        <h2 className='title'>{title}</h2>
         <h1></h1>
-        <p>{description}</p>
+        <h2 className='title-description'>{description}</h2>
       </div>
       <h1></h1>
       <div className='todo-btn-container'>

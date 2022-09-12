@@ -46,8 +46,9 @@ export default function DisplayTodo() {
 
   return (
     <section className='container'>
+      <h1 className='main-title'>Todo List</h1>
       <Link to='/add-todo' className='todo-btn-new'>
-        <button className='todo-btn'>➕ Add new todo</button>
+        <button className='todo-btn add-btn'>🆕</button>
       </Link>
       <section className='todo-data'>
         <h1></h1>
@@ -66,7 +67,7 @@ export default function DisplayTodo() {
         <section className='update-container'>
           <div className='update-todo-data'>
             <p onClick={closeHandler} className='close'>
-              &times;
+              ✖️
             </p>
             <UpdateTodo
               _id={id}

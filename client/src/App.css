@@ -17,20 +17,16 @@ todo-btn {
   cursor: pointer;
 }
 .todo-Container {
-  background-image: linear-gradient(
-    to right,
-    rgb(242, 112, 156),
-    rgb(255, 148, 114)
-  );
-
-  min-height: 100vh;
+  background-image: url('../public/cork.jpeg');
+  background-position: center;
+  background-size: 75%;
   height: max-content;
   width: 100vw;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
-  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .container {
   display: grid;
@@ -47,17 +43,19 @@ todo-btn {
   justify-items: end;
 }
 
+.main-title {
+  font-size: 6rem !important;
+}
+
 .todo-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: capitalize;
   border: none;
-  border-radius: 2rem;
-  height: 5rem;
-  width: 25rem;
-  color: white;
-  background-color: #8661d1;
+  outline: none;
+  background: transparent;
+  font-size: 2rem;
 }
 
 button {
@@ -65,9 +63,7 @@ button {
 }
 
 button:active {
-  background-color: #8661d1;
-  box-shadow: 0 7px #967cc9;
-  transform: translateY(4px);
+  font-size: 3rem;
 }
 
 .input {
@@ -77,9 +73,15 @@ button:active {
   text-transform: capitalize;
   border: none;
   border-radius: 1rem;
-  height: 4rem;
+  height: 3rem;
   width: 24rem;
+  padding: 1rem;
 }
+
+.add-btn {
+  font-size: 5rem !important;
+}
+
 .todo-btn {
   display: flex;
   margin: 0;
@@ -115,23 +117,27 @@ button:active {
   flex-direction: column;
 }
 .todo-list-block li {
-  background: rgba(134, 97, 209, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: #FEF07F;
   backdrop-filter: blur(2.5px);
   -webkit-backdrop-filter: blur(2.5px);
-  border-radius: 55px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid #FEF07F;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
-  min-height: 20rem;
-  width: 24rem !important;
+  padding: 0 2rem 2rem;
+  height: 30rem;
+  width: 30rem !important;
   margin: 0 auto 2rem;
 }
 .todo-list-block li .title-description {
   text-align: left;
 }
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .todo-list-block li .title-description h3 {
   text-transform: capitalize;
   margin-bottom: 1rem;
@@ -146,9 +152,28 @@ button:active {
 .todo-list-block {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
-  gap: 3rem;
+  gap: 5rem;
   width: 110rem;
   margin: 0 auto;
+}
+
+.pin {
+  text-align: center;
+font-size: 3rem;
+}
+
+.add-container {
+  background: #FEF07F;
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border: 1px solid #FEF07F;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2rem;
+  height: 30rem;
+  width: 30rem !important;
+  margin: 0 auto 2rem;
 }
 
 .form-container {
@@ -173,14 +198,16 @@ button:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #8661d15e;
 }
 .update-container .update-todo-data {
   display: grid;
   grid-template-areas: "close" "form";
-  background-color: #3e4451;
+  background-color: #b6fcd5;
+  height: 30rem;
+  width: 30rem;
   padding: 2rem 4rem 4rem;
   border-radius: 0.5rem;
+  border: 1px solid black;
 }
 .update-container .update-todo-data .close {
   grid-area: close;
@@ -188,9 +215,11 @@ button:active {
   font-weight: 700;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
   cursor: pointer;
+  font-size: 2rem;
 }
+
 .update-container .update-todo-data .todo-data {
   grid-area: form;
 }
