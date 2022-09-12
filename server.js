@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const configDatabase = require('./configurations/database.js');
 const todo = require('./routes/todo.routes.js');
+const path = require('path');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -14,11 +15,13 @@ const PORT = process.env.PORT || 8000;
 configDatabase();
 
 app.use(cors({ origin: true, credentials: true }));
+app.use(express.static('public'))
 
 // middleware
 app.use(express.json({ extended: false }));
-app.get('/', (req, res) =>
-  res.send('HELLO WORLD! THE SERVER IS UP AND RUNNING!'));
+app.get('/', (req, res) => {
+  res.sendFile('index.html', { root: path.join(__dirname, 'public') });
+});
 
 // routes
 app.use('/api/todoapp', todo);
@@ -27,3 +30,5 @@ app.use('/api/todoapp', todo);
 app.listen(PORT, () =>
   console.log(`SERVER IS RUNNING ON http://localhost:${PORT}`)
 );
+
+module.exports = app;

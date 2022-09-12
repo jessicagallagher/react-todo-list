@@ -1,6 +1,6 @@
 export default function TodoLists({ todoInfos, editHandler, deleteHandler }) {
   const { _id, title, description } = todoInfos;
-  
+
   return (
     // iterate over todoData and pass content to this component--diplay contents of each todo doc in db
     <li key={_id}>
