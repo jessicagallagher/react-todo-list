@@ -30,5 +30,3 @@ app.use('/api/todoapp', require(path.join(__dirname, './routes/todo.routes.js'))
 app.listen(PORT, () =>
   console.log(`SERVER IS RUNNING ON http://localhost:${PORT}`)
 );
-
-module.exports = app;
