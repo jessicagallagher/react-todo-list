@@ -22,12 +22,6 @@ app.use(express.json({ extended: false }));
 // routes
 app.use('/api/todoapp', todo);
 
-// only when ready to deploy
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
-})
-
-
 // listener
 app.listen(PORT, () =>
   console.log(`SERVER IS RUNNING ON http://localhost:${PORT}`)
