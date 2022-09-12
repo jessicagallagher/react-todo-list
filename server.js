@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const configDatabase = require('./configurations/database.js');
 const todo = require('./routes/todo.routes.js');
+const path = require('path');
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -20,6 +21,12 @@ app.use(express.json({ extended: false }));
 
 // routes
 app.use('/api/todoapp', todo);
+
+// only when ready to deploy
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
+})
+
 
 // listener
 app.listen(PORT, () =>
