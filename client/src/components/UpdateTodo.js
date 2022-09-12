@@ -12,12 +12,20 @@ export default function UpdateTodo({ _id, closeHandler, updateHandler, title, de
     setTodoInfo((data) => ({ ...data, [e.target.name]: e.target.value }));
   };
 
+  let baseURL = '';
+
+  if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:8000';
+  } else {
+    baseURL = 'https://jess-todo-list.herokuapp.com/';
+  }
+
   // send PUT request to server to update doc by _id
   const submitHandler = (e) => {
     e.preventDefault();
 
     axios
-      .put(`http://localhost:8000/api/todoapp/${_id}`, todoInfo)
+      .put(baseURL + `http://localhost:8000/api/todoapp/${_id}`, todoInfo)
       .then((res) => {
         setTodoInfo({ title: '', description: '' });
       })

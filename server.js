@@ -17,9 +17,6 @@ app.use(cors({ origin: true, credentials: true }));
 
 // middleware
 app.use(express.json({ extended: false }));
-app.get('/', (req, res) =>
-  res.send('HELLO WORLD! THE SERVER IS UP AND RUNNING!')
-);
 
 // routes
 app.use('/api/todoapp', todo);

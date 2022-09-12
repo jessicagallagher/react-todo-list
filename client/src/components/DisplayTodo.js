@@ -10,9 +10,17 @@ export default function DisplayTodo() {
   const [update, setUpdate] = useState(false);
   const [modal, setModal] = useState(false);
 
+  let baseURL = '';
+
+  if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:8000';
+  } else {
+    baseURL = 'https://jess-todo-list.herokuapp.com/';
+  }
+
   // GET request to pull data from server and display all docs
   useEffect(() => {
-    axios.get('http://localhost:8000/api/todoapp')
+    axios.get(baseURL + 'http://localhost:8000/api/todoapp')
       .then((res) => {
         console.log(`DATA: ${res.data}`);
         setInfoTodo(res.data);
@@ -33,7 +41,7 @@ export default function DisplayTodo() {
 
   // send DELETE request to server to delete doc via _id
   const deleteHandler = (e) => {
-    axios.delete(`http://localhost:8000/api/todoapp/${e.target.name}`);
+    axios.delete(baseURL + `http://localhost:8000/api/todoapp/${e.target.name}`);
     setInfoTodo((data) => {
       return data.filter((todo) => todo._id !== e.target.name);
     });

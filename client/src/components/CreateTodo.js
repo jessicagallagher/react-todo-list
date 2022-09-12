@@ -10,12 +10,20 @@ export default function CreateTodo() {
     setTodoInfo((data) => ({ ...data, [e.target.name]: e.target.value }));
   };
 
+  let baseURL = '';
+
+  if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:8000';
+  } else {
+    baseURL = 'https://jess-todo-list.herokuapp.com/';
+  }
+
   // send POST request to send new todo to server
   const handleSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:8000/api/todoapp', todoInfo)
+      .post(baseURL + 'http://localhost:8000/api/todoapp', todoInfo)
       .then((res) => {
         setTodoInfo({ title: '', description: '' });
         console.log(`MSG: ${res.data.message}`);
