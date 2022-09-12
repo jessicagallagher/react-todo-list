@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const configDatabase = require('./configurations/database.js');
-const todo = require('./routes/todo.routes.js');
+// const todo = require('./routes/todo.routes.js');
 const path = require('path');
 
 const dotenv = require('dotenv');
@@ -15,16 +15,16 @@ const PORT = process.env.PORT || 8000;
 configDatabase();
 
 app.use(cors({ origin: true, credentials: true }));
-app.use(express.static('public'))
 
 // middleware
 app.use(express.json({ extended: false }));
-app.get('/', (req, res) => {
-  res.sendFile('index.html', { root: path.join(__dirname, 'public') });
+app.use(express.static(path.join(__dirname, './client', 'build')));
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, './client', 'build', 'index.html'));
 });
 
 // routes
-app.use('/api/todoapp', todo);
+app.use('/api/todoapp', require(path.join(__dirname, './routes/todo.routes.js')));
 
 // listener
 app.listen(PORT, () =>
